@@ -7,7 +7,10 @@ namespace Cursos
     {
         static void Main(string[] args)
         {
-            HashSet<int> set = new HashSet<int>();
+            HashSet<int> courseA = new HashSet<int>();
+            HashSet<int> courseB = new HashSet<int>();
+            HashSet<int> courseC = new HashSet<int>();
+
             Console.Write("How many students for course A? ");
             int n = int.Parse(Console.ReadLine());
 
@@ -15,7 +18,7 @@ namespace Cursos
             {
                 Console.Write($"What id for student {i}? ");
                 int cod = int.Parse(Console.ReadLine());
-                set.Add(cod);
+                courseA.Add(cod);
             }
 
             Console.Write("How many students for course B? ");
@@ -25,7 +28,7 @@ namespace Cursos
             {
                 Console.Write($"What id for student {i}? ");
                 int cod = int.Parse(Console.ReadLine());
-                set.Add(cod);
+                courseB.Add(cod);
             }
 
             Console.Write("How many students for course C? ");
@@ -35,10 +38,13 @@ namespace Cursos
             {
                 Console.Write($"What id for student {i}? ");
                 int cod = int.Parse(Console.ReadLine());
-                set.Add(cod);
+                courseC.Add(cod);
             }
 
-            Console.WriteLine($"Total Students: {set.Count}");
+            HashSet<int> all = new HashSet<int>(courseA);
+            all.UnionWith(courseB);
+            all.UnionWith(courseC);
+            Console.WriteLine("Total students: " + all.Count);
         }
     }
 }
